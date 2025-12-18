@@ -1,9 +1,3 @@
-Here is a clean, professional, and "human-written" `README.md`.
-
-I have designed this to look great on your GitHub profile. It explains **what** the project is, **why** it’s cool (Tech Stack), and **how** to run it without making the reader guess.
-
-**Create a file named `README.md` in your project root and paste this in:**
-
 ```markdown
 # 🚀 User Management API (Go + Fiber)
 
@@ -31,8 +25,8 @@ The easiest way to run this application is with Docker. You don't need to instal
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/YOUR_USERNAME/age-service.git](https://github.com/YOUR_USERNAME/age-service.git)
-cd age-service
+git clone [https://github.com/faisal-990/go_assignment_age_api.git](https://github.com/faisal-990/go_assignment_age_api.git)
+cd go_assignment_age_api
 
 ```
 
@@ -97,10 +91,11 @@ go run cmd/server/main.go
 
 You can test these using `curl` or Postman.
 
-| Method | Endpoint | Description | Payload Example |
+| Method | Endpoint | Description | Payload / Query Example |
 | --- | --- | --- | --- |
 | **POST** | `/users` | Create a new user | `{"name": "Alice", "dob": "2000-01-01"}` |
 | **GET** | `/users` | List users (Pagination) | `?page=1&limit=10` |
+| **GET** | `/users/:id` | Get a single user by ID | N/A |
 | **PUT** | `/users/:id` | Update user details | `{"name": "Alice Updated", "dob": "1999-01-01"}` |
 | **DELETE** | `/users/:id` | Remove a user | N/A |
 
@@ -126,7 +121,7 @@ I followed the Standard Go Project Layout to keep things organized:
 * `internal/service`: Business logic (Age calculation, etc.).
 * `internal/repository`: Database access layer (SQLC generated code).
 * `db/migrations`: SQL files for creating/updating database tables.
-* `db/query`: Raw SQL queries used by SQLC.
+* `db/sqlc/query`: Raw SQL queries used by SQLC.
 
 ---
 
