@@ -1,0 +1,12 @@
+version: "2"
+sql:
+  - schema: "db/migrations/001_initdb_up.sql" # SQLC looks here to find your CREATE TABLE files
+    queries: "db/sqlc/query.sql" # SQLC looks here to find your INSERT/SELECT queries
+    engine: "postgresql"
+    gen:
+      go:
+        package: "generated" # The package name for the Go files it creates
+        out: "db/sqlc/generated" # Where to save the new Go files
+        emit_json_tags: true # Adds json:"name" tags to structs (handy for APIs)
+        emit_interface: true # Creates an interface (Crucial for the Unit Test bonus)
+

@@ -1,0 +1,37 @@
+services:
+  # --- Service 1: Database ---
+  db:
+    image: postgres:15-alpine
+    container_name: age_db_container
+    environment:
+      - POSTGRES_USER=${DB_USER} # <--- Reads from .env
+      - POSTGRES_PASSWORD=${DB_PASS} # <--- Reads from .env
+      - POSTGRES_DB=${DB_NAME} # <--- Reads from .env
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # --- Service 2: API ---
+  api:
+    build:
+      context: .
+      network: host
+    restart: on-failure
+    container_name: age_app_container
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    environment:
+      - APP_ENV=${APP_ENV}
+      - SERVER_PORT=${SERVER_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
+      - DB_SSL=${DB_SSL}
+      - DB_HOST=db # Keep this hardcoded as 'db' (service name)
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

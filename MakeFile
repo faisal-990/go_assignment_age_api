@@ -1,0 +1,6 @@
+build:
+	@echo "Building Process Starting....."
+	@go build -o bin/app cmd/server/main.go
+	@echo "Build completed."
+
+

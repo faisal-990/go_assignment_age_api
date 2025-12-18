@@ -1,0 +1,70 @@
+# --- Security (CRITICAL) ---
+# Never commit credentials or environment variables
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Go Build Artifacts ---
+# Binaries (your compiled app)
+main
+age-app
+server
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test binaries
+*.test
+*.out
+
+# Go workspace file (if working with multiple modules)
+go.work
+
+# --- Dependencies ---
+# Vendor folder (only ignore if you are NOT using vendoring)
+vendor/
+
+# --- IDE & Editor Configs ---
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains (GoLand/IntelliJ)
+.idea/
+*.iml
+
+# Vim/Neovim swp files
+*.swp
+*.swo
+
+# --- Docker & Local Data ---
+# Persistent volumes (Database data)
+postgres_data/
+pgdata/
+data/
+
+# Docker build logs or temp files
+.docker/
+
+# --- Operating System Junk ---
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# --- Logs & Temp Files ---
+logs/
+*.log
+tmp/
+temp/
